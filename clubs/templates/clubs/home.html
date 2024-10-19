@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h1>this is home page </h1>
+<hr>
+<a href="{% url 'createclub' %}">create club</a>
+<div>
+    {% for club in clubs %}
+    <div>
+    <h2><a href="{% url 'club' club.id %}">{{club.name}}</a></h2>
+    <hr>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}
