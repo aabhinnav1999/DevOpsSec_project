@@ -37,7 +37,7 @@ def loginpage(request):
 
 def logoutuser(request):
     logout(request)
-    return redirect('home')
+    return redirect('index')
 
 def registeruser(request):
     # page='register'
@@ -55,6 +55,9 @@ def registeruser(request):
             messages.error(request,'an error occured during registration')
     return render(request,'clubs/register.html',{'form':form})
 
+def index(request):
+    return render(request,'index.html')
+
 def home(request):
     clubs=Clubs.objects.all()
     context={'clubs':clubs}
@@ -71,7 +74,7 @@ def createclub(request):
         cname=request.POST['cname']
         description=request.POST['description']
         # print(cname,description)
-        Clubs.objects.create(name=cname,description=description)
+        Clubs.objects.create(name=cname,description=description,host_id=request.user.id)
         return redirect('home')
     return render(request,'clubs/createclub.html')
 

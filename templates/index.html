@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="{% static 'styles/main.css' %}"> -->
+
+</head>
+
+<body>
+
+    {% block content %}
+
+    <div id="index_div">
+        <!-- <h2>haii</h2> -->
+        <center>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam doloribus iste temporibus illum
+                voluptatibus dolor veniam eveniet corporis illo aliquam neque placeat dolorum, quasi voluptate nobis
+                pariatur doloremque obcaecati dignissimos velit harum. Molestias facilis tempore, velit officia
+                consequatur, odio dignissimos deleniti, minus iusto accusantium fugit. Accusantium quae distinctio saepe
+                molestias?</p>
+        </center>
+    </div>
+
+    <div id="index_images">
+        <img src="{% static 'images/football-club.jpg' %}" alt="cricket-club-img"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="{% static 'images/music-club.jpg' %}" alt="football-club-img"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="{% static 'images/cricket-club-2.jpg' %}" alt="music-club-img">
+
+    </div>
+
+    {% endblock %}
+</body>
+
+</html>

@@ -1,14 +1,33 @@
-<h1>this is for nav bar</h1>
-<hr>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+</head>
+<body>
+
+<div id="main_div_0">
+    <!-- <h1>this is for nav bar</h1> -->
+<!-- <hr> -->
+
+<span ><a href="{% url 'index' %}" id="nci">NCI Student Clubs</a></span>
 
 {% if request.user.is_authenticated %}
-<p>Hello {{request.user}}</p>
-<a href="{% url 'logout' %}">Logout</a>
+<!-- <span style="color: white;">Hello {{request.user}}</span> -->
+<a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
 {% else %}
-<a href="{% url 'login' %}">Login</a>
+<a href="{% url 'login' %}" class="btn btn-primary">Login</a> &nbsp;&nbsp;
+<a href="{% url 'register' %}" class="btn btn-primary">Register</a> 
 {% endif %}
 
-<hr>
+</div>
+
+<!-- <hr> -->
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}
@@ -20,3 +39,5 @@
 {%  block content %}
 
 {% endblock %}
+</body>
+</html>

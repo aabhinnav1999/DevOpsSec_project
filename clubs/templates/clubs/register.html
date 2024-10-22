@@ -4,6 +4,7 @@
 
 {% if page == 'login' %}
 <div>
+    <br>
     <form action="" method="post">
         {% csrf_token %}
         <input type="text" name="username" id="" placeholder="enter username">
@@ -17,6 +18,7 @@
 
 {% else %}
 <div>
+    <br>
     <form action="" method="post">
         {% csrf_token %}
         {{form.as_p}}
