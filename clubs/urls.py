@@ -11,6 +11,7 @@ urlpatterns = [
     path('createclub/',views.createclub,name='createclub'),
     path('updateclub/<int:pk>/',views.updateclub,name='updateclub'),
     path('deleteclub/<int:pk>/',views.deleteclub,name='deleteclub'),
+    path('testing/',views.testing)
 
 ]
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,HttpResponse
-from .models import Clubs
+from .models import Clubs,Messages
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
@@ -63,9 +63,36 @@ def home(request):
     context={'clubs':clubs}
     return render(request,'clubs/home.html',context)
 
+@login_required(login_url='login')
 def club(request,pk):
     clubs=Clubs.objects.get(id=pk)
-    context={'clubs':clubs}
+    all_messages=clubs.messages_set.all().order_by("-created_on")
+    members=clubs.members.all()
+    join=''
+    leave=''
+    comment=''
+    if request.method=="POST":
+        if 'join' in request.POST:
+            join=request.POST['join']
+            clubs.members.add(request.user)
+        # print(join,type(join))
+
+        if 'leave' in request.POST:
+            leave=request.POST['leave']
+            clubs.members.remove(request.user)
+            # Messages.objects.filter(user=request.user,club_id=pk).delete()
+        # print(leave,type(leave))
+
+        if 'comment'in request.POST:
+            if request.POST['comment']!='':
+                c_messages=Messages.objects.create(
+                user=request.user,
+                club=clubs,
+                body=request.POST.get('comment')
+                )
+
+        return redirect('club',pk=clubs.id)
+    context={'clubs':clubs,'all_messages':all_messages,'members':members}
     return render(request,'clubs/club.html',context)
 
 @login_required(login_url='login')
@@ -107,3 +134,5 @@ def deleteclub(request,pk):
         return redirect('home')
     return render(request, 'clubs/deleteclub.html',{'obj':club})
 
+def testing(request):
+    return render(request,'clubs/testing.html')

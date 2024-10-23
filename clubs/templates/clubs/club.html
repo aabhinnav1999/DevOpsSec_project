@@ -2,11 +2,70 @@
 
 {% block content %}
 
-<h1>this is club page</h1>
-<hr>
+<style>
+    .my-container{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+</style>
 
-<div>
+<div class="my-container">
+
+    <div>
+
+    <div>
+    <h1>this is club page</h1>
+    <hr>
     <h2>this is {{ clubs.name }}</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% if user not in members %}
+        <input type="submit" value="join" name="join" id="join" class="btn btn-primary">
+        {% else %}
+        <input type="submit" name="leave" id="leave" value="leave" class="btn btn-danger">
+        {% endif %}
+    </form>
+    </div>
+
+    <div>
+        <h3>conversation</h3>
+        <hr>
+
+        {% for message in all_messages %}
+            <div>
+                <small>@{{message.user}} {{message.created_on}} ago</small>
+                <p>{{message.body}}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if request.user.is_authenticated %}
+    <div class="club-comment-form">
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="text" name="comment" id="comment" placeholder="write you comments...">
+        </form>
+
+    </div>
+    {% endif %}
+
+    </div>
+
+
+    
+    <div>
+        <h3>members</h3>
+        <hr>
+
+        {% for student in members %}
+        <div>
+            <p>{{student.username}}</p>
+        </div>
+        {% endfor %}
+    </div>
+    
+
 </div>
+
 
 {% endblock %}

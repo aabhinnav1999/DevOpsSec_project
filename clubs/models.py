@@ -7,7 +7,7 @@ class Clubs(models.Model):
     host=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     name=models.CharField(max_length=50)
     description=models.TextField(null=True,blank=True)
-    # members=
+    members=models.ManyToManyField(User,related_name='members',blank=True)
     updated_on=models.DateTimeField(auto_now=True)
     created_on=models.DateTimeField(auto_now_add=True)
 
@@ -17,7 +17,7 @@ class Clubs(models.Model):
 class Messages(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     club=models.ForeignKey(Clubs,on_delete=models.CASCADE)
-    body=models.TextField()
+    body=models.TextField(null=True,blank=True)
     updated_on=models.DateTimeField(auto_now=True)
     created_on=models.DateTimeField(auto_now_add=True)
 
