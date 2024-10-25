@@ -134,5 +134,5 @@ def deleteclub(request,pk):
         return redirect('home')
     return render(request, 'clubs/deleteclub.html',{'obj':club})
 
-def testing(request):
-    return render(request,'clubs/testing.html')
+# def testing(request):
+#     return render(request,'clubs/testing.html')
