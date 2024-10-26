@@ -12,32 +12,54 @@
 <body>
 
 <div id="main_div_0">
-    <!-- <h1>this is for nav bar</h1> -->
-<!-- <hr> -->
 
 <span ><a href="{% url 'index' %}" id="nci">NCI Student Clubs</a></span>
 
+
+
 {% if request.user.is_authenticated %}
-<!-- <span style="color: white;">Hello {{request.user}}</span> -->
+
 <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
 {% else %}
 <a href="{% url 'login' %}" class="btn btn-primary">Login</a> &nbsp;&nbsp;
 <a href="{% url 'register' %}" class="btn btn-primary">Register</a> 
+
 {% endif %}
 
 </div>
 
-<!-- <hr> -->
-{% if messages %}
+<!-- {% if messages %}
+
 <ul class="messages">
     {% for message in messages %}
     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
     {% endfor %}
 </ul>
-{% endif %}
+
+{% endif %} -->
+
 
 {%  block content %}
 
+    <div id="index_div">
+        
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam doloribus iste temporibus illum
+                voluptatibus dolor veniam eveniet corporis illo aliquam neque placeat dolorum, quasi voluptate nobis
+                pariatur doloremque obcaecati dignissimos velit harum. Molestias facilis tempore, velit officia
+                consequatur, odio dignissimos deleniti, minus iusto accusantium fugit. Accusantium quae distinctio saepe
+                molestias?</p>
+        
+    </div>
+
+    <div id="index_images">
+        <img src="{% static 'images/football-club.jpg' %}" alt="cricket-club-img"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="{% static 'images/music-club.jpg' %}" alt="football-club-img"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="{% static 'images/cricket-club-2.jpg' %}" alt="music-club-img">
+
+    </div>
+
+
 {% endblock %}
+
 </body>
 </html>

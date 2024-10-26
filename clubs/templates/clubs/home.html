@@ -2,11 +2,13 @@
 
 {% block content %}
 
-<h1>this is home page </h1>
-<hr>
-<a href="{% url 'createclub' %}">create club</a>
-<hr>
+<!-- <h1>this is home page </h1> -->
+<!-- <hr>
+
+<hr> -->
+
 <div>
+    <a href="{% url 'createclub' %}">create club</a>
     {% for club in clubs %}
     <div>
     <span>@{{ club.host.username }}</span>

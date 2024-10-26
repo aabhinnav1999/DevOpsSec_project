@@ -9,12 +9,12 @@ from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
 def loginpage(request):
-    page='login'
+    # page='login'
     if request.user.is_authenticated:
         return redirect('home')
     if request.method=='POST':
-        username=request.POST['username'].lower()
-        password=request.POST['password']
+        username=request.POST.get('username').lower()
+        password=request.POST.get('password')
 
         try:
             user=User.objects.get(username=username)
@@ -32,8 +32,8 @@ def loginpage(request):
             messages.error(request,'username or password does not exist')
 
 
-    context={'page':page}
-    return render(request,'clubs/register.html',context)
+    # context={'page':page}
+    return render(request,'clubs/login.html')
 
 def logoutuser(request):
     logout(request)
@@ -41,22 +41,45 @@ def logoutuser(request):
 
 def registeruser(request):
     # page='register'
-    form=UserCreationForm()
+    # form=UserCreationForm()
 
-    if request.method=="POST":
-        form=UserCreationForm(request.POST)
-        if form.is_valid():
-            user=form.save(commit=False)
-            user.username=user.username.lower()
-            user.save()
-            login(request,user)
-            return redirect('home')
-        else:
-            messages.error(request,'an error occured during registration')
-    return render(request,'clubs/register.html',{'form':form})
+    # if request.method=="POST":
+    #     form=UserCreationForm(request.POST)
+    #     if form.is_valid():
+    #         user=form.save(commit=False)
+    #         user.username=user.username.lower()
+    #         user.save()
+    #         login(request,user)
+    #         return redirect('home')
+
+    if request.user.is_authenticated:
+        return redirect('home')
+    
+    if request.method=='POST':
+        username=request.POST.get('username')
+        email=request.POST.get('email')
+        password=request.POST.get('password')
+
+        if len(password)<7:
+            messages.error(request,'password must be atleast 8 characters')
+            return redirect('register')
+        
+        all_usernames=User.objects.filter(username=username)
+
+        if all_usernames:
+            messages.error(request,'username already exists, try another')
+            return redirect('register')
+
+        new_user=User.objects.create_user(username=username,email=email,password=password)
+        new_user.save()
+        messages.success(request,'user successfully created, login now!')
+        
+        return redirect('login')
+
+    return render(request,'clubs/register.html')
 
 def index(request):
-    return render(request,'index.html')
+    return render(request,'main.html')
 
 def home(request):
     clubs=Clubs.objects.all()

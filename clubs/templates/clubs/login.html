@@ -1,63 +1,31 @@
 {% extends 'main.html' %}
 
 {% block content %}
-
-<!-- {% if page == 'login' %}
-<div class="wrapper">
-    <br>
-    <form action="" method="post">
-        {% csrf_token %}
-        <input type="text" name="username" id="" placeholder="enter username">
-        <input type="password" name="password" id="password" placeholder="enter password">
-        <input type="submit" value="login">
-    </form>
-
-    <p>Not Signed Up ?</p>
-    <a href="{% url 'register' %}">Sign Up</a>
-</div>
-
-{% else %}
-<div>
-    <br>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="register">
-    </form>
-
-    <p>Already Signed Up</p>
-    <a href="{% url 'login' %}">Login</a>
-</div>
-
-{% endif %} -->
-
 {% csrf_token %}
 <!DOCTYPE html>
-<!-- Coding by CodingLab | www.codinglabweb.com-->
 <html lang="en" dir="ltr">
   <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
-    <title>Register</title>
+
+    <title>Login</title>
    </head>
 <body>
   <div class="wrapper">
-    <h2>Register</h2><br>
+    <h2>Login</h2><br>
+
     {% if messages %}
       {% for message in messages %}
-        <h3 style="color: orangered;">{{message}}</h3>
+        <h2 style="color: orangered;">{{message}}</h2>
       {% endfor %}
     {% endif %}
+    
     <form action="#" method="POST">
-    {% csrf_token %}
+      {% csrf_token %}
       <div class="input-box">
-        <input type="text" placeholder="Create a username" required name="username">
-      </div>
-      <div class="input-box">
-        <input type="email" placeholder="Enter your email" required name="email">
+        <input type="text" placeholder="Enter your username" required name="username">
       </div>
       <div class="input-box">
         <input type="password" placeholder="Enter your password" required name="password">
@@ -65,10 +33,10 @@
       <div class="policy">
       </div>
       <div class="input-box button">
-        <input type="Submit" value="Register">
+        <input type="Submit" value="Login">
       </div>
       <div class="text">
-        <h3>Have an account? <a href="{% url 'login' %}">Login now</a></h3>
+        <h3>Don't have an account? <a href="{% url 'register' %}">Register now</a></h3>
       </div>
       <!-- <div class="text">
         <h3>Forgot Password? <a href="#">Reset</a></h3>
@@ -78,7 +46,7 @@
 </body>
 
 <style>
-  *{
+*{
     margin: 0px;
     padding: 0px;
     justify-content: center;
@@ -100,7 +68,7 @@ body{
   background: #fff;
   padding: 34px;
   border-radius: 6px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
   margin: 20px;
 }
 .wrapper h2{
@@ -134,7 +102,6 @@ form .input-box input{
   font-size: 17px;
   font-weight: 400;
   color: #333;
-  /* color: red; */
   border: 1.5px solid #C7BEBE;
   border-bottom-width: 2.5px;
   border-radius: 6px;
