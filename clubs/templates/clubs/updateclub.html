@@ -9,12 +9,13 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
+    <div class="register_form">
+        <center><h2 id="h2_text">EDIT CLUB</h2></center>
         <form action="" method="post">
             {% csrf_token %}
-            <input type="text" name="cname" id="cname" placeholder="enter club name " value="{{ club.name }}"> <br><br>
-            <textarea name="description" id="description" rows="5" cols="25" placeholder="{{ club.description }}"></textarea> <br><br>
-            <button type="button" class="btn btn-warning">Warning</button>
+            <center><input type="text" name="reg_username" id="reg_username" placeholder="enter club name " value="{{ club.name }}"> <br><br> <br>
+            <textarea name="description" id="description" rows="5" cols="28" placeholder=" {{ club.description }}"></textarea> <br>
+            <input type="submit" name="submit" id="submit" class="btn btn-success" value="Edit Club"></center>
         </form>
     </div>
 </body>

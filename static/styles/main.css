@@ -1,27 +1,22 @@
 *{
     margin: 0px;
     padding: 0px;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 body{
-    display: flex;
-    flex-wrap: wrap;
-    /* align-items: center; */
-    /* justify-content: center; */
     background: #f1f3f9;
-  }
-
-/* main_div_0 */
-
-#main_div_0
-{
-background-color: green;
-height: 75px;
-width: 100%;
-/* float: left; */
 }
 
+#main_div_0{
+    display: flex;
+    flex-wrap: wrap;
+    /* align-items: center;
+    justify-content: center; */
+    background-color: green;
+    height: 75px;
+    width: 100%;
+}
 
 #nci
 {
@@ -34,7 +29,7 @@ width: 100%;
     left: 40px;
 }
 
- #main_div_0 .btn-primary
+#main_div_0 .btn-primary
 {
     color: white;
     position: relative;
@@ -42,24 +37,28 @@ width: 100%;
     left: 1100px;
     text-decoration: none;
     /* background-color: brown; */
+    height: 35px;
 } 
-
 
 #main_div_0 .btn-danger
 {
     color: white;
     position: relative;
-    top: 10px;
+    top: 16px;
+    left: 1175px;
     text-decoration: none;
     float: right;
+    height: 35px;
+
 }
 
-/* index_div */
 #index_div
 {
     height: 200px;
     width: 100%;
-    /* float: left; */
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
 } 
 
 #index_div p
@@ -69,17 +68,110 @@ width: 100%;
     top: 45px;
 }
 
-
-#index_images img
+.main_img
 {
     width: 300px;
     height: 300px;
     position: relative;
-    top: 50px;
-    left: 10px;
+    top: 125px;
+    left: 260px;
     /* border: 2px solid black; */
     border-radius: 10px;
-    box-shadow: 0 0 100px rgb(166, 159, 159);
+    box-shadow: 0 0 100px rgb(244, 242, 242);
 }
 
+#message_h4{
+    float: right;
+}
+
+/* register page */
+
+.register_form{
+    border: solid black 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 25px;
+    box-shadow: 0 0 100px rgb(166, 159, 159);
+    height: 350px;
+    width: 350px;
+    border-color: #fff;
+    border-radius: 16px;
+    position: relative;
+    top: 100px;
+    left: 600px;
+}
+
+.register_form input
+{
+    position: relative;
+    top: 20px;
+}
+
+#reg_username,#reg_password,#reg_re_password{
+    height: 30px;
+    width: 220px;
+}
+
+.create_club_div{
+    height: 50px;
+    width: 100%;
+    /* border: solid 1px black; */
+    float: left;
+}
+
+#create_club{
+    color: white;
+    position: relative;
+    top: 10px;
+    left: 1400px;
+}
+
+.clubs_div{
+    height: 180px;
+    width: 100%;
+    border: solid black 2px;
+    float: left;
+    box-shadow: 0 0 100px rgb(166, 159, 159);
+
+}
+
+#empty_div{
+    height: 15px;
+    width: 100%;
+    /* border: solid 1px black; */
+    float: left;
+}
+
+.club_createdon{
+    float: right;
+}
+
+.join_leave{
+    position: relative;
+    top: 10px;
+}
+
+.members_div{
+    height: 100%;
+    width: 100%;
+    border: solid 1px black;
+    float: left;
+}
+
+
+
+/* .conversation{
+
+    float: left;
+    height: 100px;
+    width: 100px;
+}
+
+.messages_div
+{
+    height: 100px;
+    width: 100px;
+    border: solid 1px black;
+    float: left;
+} */
 

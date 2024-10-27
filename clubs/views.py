@@ -9,19 +9,19 @@ from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
 def loginpage(request):
-    # page='login'
     if request.user.is_authenticated:
         return redirect('home')
     if request.method=='POST':
-        username=request.POST.get('username').lower()
-        password=request.POST.get('password')
+        username=request.POST.get('reg_username')
+        password=request.POST.get('reg_password')
 
         try:
             user=User.objects.get(username=username)
 
 
         except:
-            messages.error(request,'user does not exist')
+            messages.error(request,'Username or Password is wrong')
+            return redirect('login')
 
         user=authenticate(request,username=username,password=password)
 
@@ -29,10 +29,8 @@ def loginpage(request):
             login(request,user)
             return redirect('home')
         else:
-            messages.error(request,'username or password does not exist')
-
-
-    # context={'page':page}
+            messages.error(request,'Username or Password is wrong')
+            return redirect('login')
     return render(request,'clubs/login.html')
 
 def logoutuser(request):
@@ -40,37 +38,30 @@ def logoutuser(request):
     return redirect('index')
 
 def registeruser(request):
-    # page='register'
-    # form=UserCreationForm()
-
-    # if request.method=="POST":
-    #     form=UserCreationForm(request.POST)
-    #     if form.is_valid():
-    #         user=form.save(commit=False)
-    #         user.username=user.username.lower()
-    #         user.save()
-    #         login(request,user)
-    #         return redirect('home')
 
     if request.user.is_authenticated:
         return redirect('home')
     
     if request.method=='POST':
-        username=request.POST.get('username')
-        email=request.POST.get('email')
-        password=request.POST.get('password')
+        username=request.POST.get('reg_username')
+        password=request.POST.get('reg_password')
+        re_password=request.POST.get('reg_re_password')
 
         if len(password)<7:
-            messages.error(request,'password must be atleast 8 characters')
+            messages.error(request,'Password must be atleast 8 characters')
             return redirect('register')
         
         all_usernames=User.objects.filter(username=username)
 
         if all_usernames:
-            messages.error(request,'username already exists, try another')
+            messages.error(request,'Username already exists, try another')
+            return redirect('register')
+        
+        if password!=re_password:
+            messages.error(request,'Password and confirm password do not match')
             return redirect('register')
 
-        new_user=User.objects.create_user(username=username,email=email,password=password)
+        new_user=User.objects.create_user(username=username,password=password)
         new_user.save()
         messages.success(request,'user successfully created, login now!')
         
@@ -121,9 +112,8 @@ def club(request,pk):
 @login_required(login_url='login')
 def createclub(request):
     if request.method=="POST":
-        cname=request.POST['cname']
+        cname=request.POST['reg_username']
         description=request.POST['description']
-        # print(cname,description)
         Clubs.objects.create(name=cname,description=description,host_id=request.user.id)
         return redirect('home')
     return render(request,'clubs/createclub.html')
@@ -132,15 +122,13 @@ def createclub(request):
 def updateclub(request,pk):
     club=Clubs.objects.get(id=pk)
     res=club.description
-    # print(res)
     context={'club':club}
     
     if request.user != club.host:
         return HttpResponse("you are not allowed here!")
     if request.method=="POST":
-        cname=request.POST['cname']
+        cname=request.POST['reg_username']
         description=request.POST['description']
-        # print(type(description),len(description))
         if len(description)==0:
             description=res
         Clubs.objects.filter(id=pk).update(name=cname,description=description)
