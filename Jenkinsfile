@@ -7,5 +7,11 @@ pipeline {
                 git credentialsId: 'github_credentials', url: 'https://github.com/aabhinnav1999/DevOpsSec_project'
             }
         }
+        stage('2.scripts.sh') {
+            steps {
+                sh '''sudo chmod +x scripts.sh
+                ./scripts.sh'''
+            }
+        }
     }
 }
