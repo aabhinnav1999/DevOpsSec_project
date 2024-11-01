@@ -1,7 +1,6 @@
 *{
     margin: 0px;
     padding: 0px;
-    /* justify-content: center; */
 }
 
 body{
@@ -11,8 +10,6 @@ body{
 #main_div_0{
     display: flex;
     flex-wrap: wrap;
-    /* align-items: center;
-    justify-content: center; */
     background-color: green;
     height: 75px;
     width: 100%;
@@ -36,7 +33,6 @@ body{
     top: 16px;
     left: 1100px;
     text-decoration: none;
-    /* background-color: brown; */
     height: 35px;
 } 
 
@@ -75,7 +71,6 @@ body{
     position: relative;
     top: 125px;
     left: 260px;
-    /* border: 2px solid black; */
     border-radius: 10px;
     box-shadow: 0 0 100px rgb(244, 242, 242);
 }
@@ -115,7 +110,6 @@ body{
 .create_club_div{
     height: 50px;
     width: 100%;
-    /* border: solid 1px black; */
     float: left;
 }
 
@@ -138,7 +132,6 @@ body{
 #empty_div{
     height: 15px;
     width: 100%;
-    /* border: solid 1px black; */
     float: left;
 }
 
@@ -161,7 +154,6 @@ body{
 
 .club_messages,.members_div{
     border: 2px solid black;
-    /* background-color:lightblue; */
     height: 100%;
     width: 100%;
     float: left;
