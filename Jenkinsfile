@@ -1,10 +1,10 @@
 pipeline {
-    agent any
+    agent {label 'node_1'}
 
     stages {
-        stage('Hello') {
+        stage('1.git') {
             steps {
-                echo 'Hello World'
+                git credentialsId: 'github_credentials', url: 'https://github.com/aabhinnav1999/DevOpsSec_project'
             }
         }
     }
