@@ -70,8 +70,12 @@ def registeruser(request):
     return render(request,'clubs/register.html')
 
 def index(request):
-    return render(request,'main.html')
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        return render(request,'main.html')
 
+@login_required(login_url='login')
 def home(request):
     clubs=Clubs.objects.all()
     context={'clubs':clubs}
@@ -89,13 +93,10 @@ def club(request,pk):
         if 'join' in request.POST:
             join=request.POST['join']
             clubs.members.add(request.user)
-        # print(join,type(join))
 
         if 'leave' in request.POST:
             leave=request.POST['leave']
             clubs.members.remove(request.user)
-            # Messages.objects.filter(user=request.user,club_id=pk).delete()
-        # print(leave,type(leave))
 
         if 'comment'in request.POST:
             if request.POST['comment']!='':
@@ -112,9 +113,18 @@ def club(request,pk):
 @login_required(login_url='login')
 def createclub(request):
     if request.method=="POST":
-        cname=request.POST['reg_username']
+        cname=request.POST['reg_username'].lower()
         description=request.POST['description']
-        Clubs.objects.create(name=cname,description=description,host_id=request.user.id)
+
+        all_club_names=Clubs.objects.filter(name=cname)
+
+        if all_club_names:
+            messages.error(request,'Club name already exists, try another')
+            return redirect('createclub')
+
+        else:
+            Clubs.objects.create(name=cname,description=description,host_id=request.user.id)
+
         return redirect('home')
     return render(request,'clubs/createclub.html')
 
@@ -126,6 +136,7 @@ def updateclub(request,pk):
     
     if request.user != club.host:
         return HttpResponse("you are not allowed here!")
+    
     if request.method=="POST":
         cname=request.POST['reg_username']
         description=request.POST['description']
@@ -144,6 +155,3 @@ def deleteclub(request,pk):
         club.delete()
         return redirect('home')
     return render(request, 'clubs/deleteclub.html',{'obj':club})
-
-# def testing(request):
-#     return render(request,'clubs/testing.html')

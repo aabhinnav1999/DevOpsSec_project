@@ -149,6 +149,7 @@ body{
 .join_leave{
     position: relative;
     top: 10px;
+    left: 10px;
 }
 
 .members_div{
@@ -158,20 +159,22 @@ body{
     float: left;
 }
 
-
-
-/* .conversation{
-
+.club_messages,.members_div{
+    border: 2px solid black;
+    /* background-color:lightblue; */
+    height: 100%;
+    width: 100%;
     float: left;
-    height: 100px;
-    width: 100px;
 }
 
-.messages_div
+.btn-dark
 {
-    height: 100px;
-    width: 100px;
-    border: solid 1px black;
-    float: left;
-} */
+    position: relative;
+    left: 90px;
+    bottom: 28px;
+}
 
+/* .club-comment-form{
+    position: relative;
+    top: 25px;
+} */

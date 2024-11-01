@@ -22,8 +22,8 @@
             <span>Club Admin: @{{ club.host.username }}</span>
             <span class="club_createdon">{{club.created_on|timesince}} ago</span>
 
-            <h2><a href="{% url 'club' club.id %}">{{club.name}}</a></h2>
-            <p>Club Description: {{club.description}}</p>
+            <h2><a href="{% url 'club' club.id %}">{{club.name|upper}}</a></h2>
+            <p>Welcome Students!</p>
             {% if request.user == club.host %}
             <a href="{% url 'updateclub' club.id %}" class="btn btn-warning">edit here</a>
             <a href="{% url 'deleteclub' club.id %}" class="btn btn-warning">delete here</a>
