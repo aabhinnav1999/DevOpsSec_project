@@ -13,5 +13,12 @@ pipeline {
                 ./scripts.sh'''
             }
         }
+        stage('3.nginx') {
+            steps {
+                sh '''cd nginx
+                sudo chmod +x nginx.sh
+                ./nginx.sh'''
+            }
+        }
     }
 }
