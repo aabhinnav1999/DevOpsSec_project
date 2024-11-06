@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo cp .env /home/ubuntu/cicd/workspace/django_pipeline
 cd /home/ubuntu/cicd/workspace/django_pipeline
 sudo apt update
 sudo apt install python3-venv -y
