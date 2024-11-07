@@ -15,7 +15,7 @@ pipeline {
         }
         stage('3.gunicorn') {
             steps {
-                sh '''cd gunicorn
+                sh '''cd gunicorn_folder
                 sudo chmod +x gunicorn.sh
                 ./gunicorn.sh'''
             }
