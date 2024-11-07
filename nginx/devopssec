@@ -1,9 +1,9 @@
 server {
-    listen 80;
-    server_name 34.243.130.60;
+    listen 80 default_server;
+    server_name _;
 
     location = /favicon.ico { access_log off; log_not_found off; }
-    location /static/ {
+    location /staticfiles/ {
         root /home/ubuntu/cicd/workspace/django_pipeline;
     }
 
