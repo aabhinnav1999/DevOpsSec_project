@@ -13,6 +13,13 @@ pipeline {
                 ./scripts.sh'''
             }
         }
+        stage('3.gunicorn') {
+            steps {
+                sh '''cd gunicorn
+                sudo chmod +x gunicorn.sh
+                ./gunicorn.sh'''
+            }
+        }
         stage('3.nginx') {
             steps {
                 sh '''cd nginx
