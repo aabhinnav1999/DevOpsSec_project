@@ -4,7 +4,7 @@ server {
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /staticfiles/ {
-        root /home/ubuntu/cicd/workspace/django_pipeline;
+        root /home/ubuntu/DevOpsSec_project;
     }
 
     location / {

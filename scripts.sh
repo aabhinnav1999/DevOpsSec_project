@@ -14,3 +14,4 @@ sudo chmod +x gunicorn.sh
 cd /home/ubuntu/DevOpsSec_project
 cd nginx
 sudo chmod +x nginx.sh
+./nginx.sh
