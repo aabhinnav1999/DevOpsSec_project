@@ -32,13 +32,12 @@ pipeline {
                 git credentialsId: 'github_credentials', url: 'https://github.com/aabhinnav1999/DevOpsSec_project'
             }
         }
-        stage('1.git pull') {
+        stage('2. copy') {
             steps {
-            sh '''cd /home/ubuntu/DevOpsSec_project
-            git pull origin master'''
+            sh '''sudo cp -r /home/ubuntu/cicd/workspace/django_pipeline/* /home/ubuntu/DevOpsSec_project/'''
             }
         }
-        stage('2.restart') {
+        stage('3.restart') {
             steps {
             sh '''sudo systemctl daemon-reload
             sudo systemctl restart gunicorn
