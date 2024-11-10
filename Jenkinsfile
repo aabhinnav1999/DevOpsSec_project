@@ -27,6 +27,11 @@ pipeline {
         //         ./nginx.sh'''
         //     }
         // }
+        stage('1.git') {
+            steps {
+                git credentialsId: 'github_credentials', url: 'https://github.com/aabhinnav1999/DevOpsSec_project'
+            }
+        }
         stage('1.git pull') {
             steps {
             sh '''cd /home/ubuntu/DevOpsSec_project
