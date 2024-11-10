@@ -28,13 +28,17 @@ pipeline {
         //     }
         // }
         stage('1.git pull') {
+            steps {
             sh '''cd /home/ubuntu/DevOpsSec_project
             git pull origin master'''
+            }
         }
         stage('2.restart') {
+            steps {
             sh '''sudo systemctl daemon-reload
             sudo systemctl restart gunicorn
             sudo systemctl restart nginx'''
+            }
         }
     }
 }
