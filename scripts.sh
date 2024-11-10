@@ -1,6 +1,4 @@
 #!/bin/bash
-# sudo cp /home/ubuntu/.env /home/ubuntu/cicd/workspace/django_pipeline/
-cd /home/ubuntu/cicd/workspace/django_pipeline
 sudo apt update
 sudo apt install python3-venv -y
 sudo apt-get install pkg-config libmysqlclient-dev python3-dev -y
@@ -10,3 +8,9 @@ sudo apt install python3-pip -y
 pip install -r requirements.txt
 python3 manage.py makemigrations
 python3 manage.py migrate
+cd gunicorn_folder
+sudo chmod +x gunicorn.sh
+./gunicorn.sh
+cd /home/ubuntu/DevOpsSec_project
+cd nginx
+sudo chmod +x nginx.sh
