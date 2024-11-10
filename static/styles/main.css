@@ -10,7 +10,7 @@ body{
 #main_div_0{
     display: flex;
     flex-wrap: wrap;
-    background-color: green;
+    background-color: aqua;
     height: 75px;
     width: 100%;
 }
