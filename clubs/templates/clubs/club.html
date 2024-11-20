@@ -6,7 +6,7 @@
             <form action="" method="post">
                 {% csrf_token %}
                 {% if user not in members %}
-                <input type="submit" value="join" name="join" id="Join" class="btn btn-primary join_leave">
+                <input type="submit" value="Join" name="join" id="join" class="btn btn-primary join_leave">
                 {% else %}
                 <input type="submit" name="leave" id="leave" value="Leave" class="btn btn-danger join_leave">
                 {% endif %}
@@ -37,18 +37,5 @@
             {% endif %}
         </div> <br>
 
-    </div>
-
-
-    <!-- <div class="members_div">
-        <h3>CLUB MEMBERS</h3>
-        <hr>
-
-        {% for student in members %}
-        <div>
-            <p style="font-size: 20px; font-weight: bolder;">{{student.username}}</p>
         </div>
-        {% endfor %}
-    </div> -->
-
 {% endblock %}

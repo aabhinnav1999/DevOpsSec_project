@@ -10,7 +10,7 @@ body{
 #main_div_0{
     display: flex;
     flex-wrap: wrap;
-    background-color: blue;
+    background-color: green;
     height: 75px;
     width: 100%;
 }
@@ -87,13 +87,15 @@ body{
     padding-right: 10px;
     padding-top: 25px;
     box-shadow: 0 0 100px rgb(166, 159, 159);
-    height: 350px;
+    height: 360px;
     width: 350px;
     border-color: #fff;
     border-radius: 16px;
     position: relative;
     top: 100px;
     left: 600px;
+    align-items: center;
+    align-items: center;
 }
 
 .register_form input
@@ -105,6 +107,11 @@ body{
 #reg_username,#reg_password,#reg_re_password{
     height: 30px;
     width: 220px;
+}
+
+.register_form #description,#reg_username,#h2_text,.btn-success,#reg_username,#reg_password,#reg_re_password,.btn-primary,#pid{
+    position: relative;
+    left: 50px;
 }
 
 .create_club_div{
@@ -142,7 +149,7 @@ body{
 .join_leave{
     position: relative;
     top: 10px;
-    left: 10px;
+    left: 100px;
 }
 
 .members_div{
@@ -162,11 +169,28 @@ body{
 .btn-dark
 {
     position: relative;
-    left: 90px;
+    left: 25px;
     bottom: 28px;
 }
 
-/* .club-comment-form{
+.delete_go_back{
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 10px;
     position: relative;
-    top: 25px;
-} */
+    left: 120px;
+}
+
+.btn-danger {
+    position: relative;
+    left: 120px;
+}
+
+.delete_p {
+    position: relative;
+    left: 25px;
+    font-size: 18px;
+}

@@ -79,50 +79,28 @@ WSGI_APPLICATION = 'devopssec.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST':config('DB_HOST'),
-        'PORT':config('DB_PORT',default="3306"),
-
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",            
-        }
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': "django",
-#         'USER': "arjun_19",
-#         'PASSWORD': "terraformrdsaws",
-#         'HOST':"django-mysql.cl04yu6qkyp6.eu-west-1.rds.amazonaws.com",
-#         'PORT': 3306,
+#         'NAME': config('DB_NAME'),
+#         'USER': config('DB_USER'),
+#         'PASSWORD': config('DB_PASSWORD'),
+#         'HOST':config('DB_HOST'),
+#         'PORT':config('DB_PORT',default="3306"),
 
 #         'OPTIONS': {
-#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-
-#             # 'ssl': {
-#             #     'ca': '/rdsdbdata/rds-metadata/ca-cert.pem',
-#             #     'verify_server_cert': False,
-#             #     }           
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",            
 #         }
 
 #     }
 # }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

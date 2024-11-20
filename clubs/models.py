@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 
 class Clubs(models.Model):
     host=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
-    name=models.CharField(max_length=50)
-    description=models.TextField(null=True,blank=True)
+    name=models.CharField(max_length=20)
+    description=models.TextField(default='This Is A Club')
     members=models.ManyToManyField(User,related_name='members',blank=True)
     created_on=models.DateTimeField(auto_now_add=True)
     
@@ -16,5 +16,5 @@ class Clubs(models.Model):
 class Messages(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     club=models.ForeignKey(Clubs,on_delete=models.CASCADE)
-    body=models.TextField(null=True,blank=True)
+    body=models.TextField(default='Enter Description')
     created_on=models.DateTimeField(auto_now_add=True)

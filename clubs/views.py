@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
@@ -19,7 +18,7 @@ def loginpage(request):
             user=User.objects.get(username=username)
 
 
-        except:
+        except Exception:
             messages.error(request,'Username or Password is wrong')
             return redirect('login')
 
@@ -100,7 +99,7 @@ def club(request,pk):
 
         if 'comment'in request.POST:
             if request.POST['comment']!='':
-                c_messages=Messages.objects.create(
+                Messages.objects.create(
                 user=request.user,
                 club=clubs,
                 body=request.POST.get('comment')
@@ -146,12 +145,11 @@ def updateclub(request,pk):
         return redirect('home')
     return render(request,'clubs/updateclub.html',context)
 
+
 @login_required(login_url='login')
 def deleteclub(request,pk):
     club=Clubs.objects.get(id=pk)
-    if request.user != club.host:
-        return HttpResponse("you are not allowed here!")
-    if request.method=='POST':
+    if request.method=='POST':  
         club.delete()
         return redirect('home')
-    return render(request, 'clubs/deleteclub.html',{'obj':club})
+    return render(request, 'clubs/deleteclub.html',{'club':club})

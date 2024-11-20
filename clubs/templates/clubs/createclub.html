@@ -10,12 +10,12 @@
 </head>
 <body>
     <div class="register_form">
-        <center><h2 id="h2_text">CREATE CLUB</h2></center>
+        <h2 id="h2_text">CREATE CLUB</h2>
         <form action="" method="post">
             {% csrf_token %}
-            <center><input type="text" name="reg_username" id="reg_username" placeholder="enter club name "> <br><br> <br>
-            <textarea name="description" id="description" rows="5" cols="28" placeholder=" enter description for club"></textarea> <br>
-            <input type="submit" name="submit" id="submit" class="btn btn-success" value="Create Club"></center>
+            <input type="text" name="reg_username" id="reg_username" placeholder="enter club name " required> <br><br> <br>
+            <textarea name="description" id="description" rows="5" cols="28" placeholder=" enter description for club" required></textarea> <br>
+            <input type="submit" name="submit" id="submit" class="btn btn-success" value="Create Club">
         </form>
     </div>
 </body>
