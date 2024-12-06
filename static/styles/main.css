@@ -95,7 +95,6 @@ body{
     top: 100px;
     left: 600px;
     align-items: center;
-    align-items: center;
 }
 
 .register_form input
@@ -109,7 +108,7 @@ body{
     width: 220px;
 }
 
-.register_form #description,#reg_username,#h2_text,.btn-success,#reg_username,#reg_password,#reg_re_password,.btn-primary,#pid{
+.register_form #description,#reg_username,#h2_text,.btn-success,#reg_password,#reg_re_password,.btn-primary,#pid{
     position: relative;
     left: 50px;
 }
