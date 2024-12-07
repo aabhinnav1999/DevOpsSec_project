@@ -3,8 +3,8 @@ server {
     server_name _;
 
     location = /favicon.ico { access_log off; log_not_found off; }
-    location /staticfiles/ {
-        root /home/ubuntu/DevOpsSec_project;
+    location /static/ {
+        root //home/ubuntu/cicd/workspace/devops_pipeline;
     }
 
     location / {

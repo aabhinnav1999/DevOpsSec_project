@@ -11,7 +11,7 @@ python3 manage.py migrate
 cd gunicorn_folder
 sudo chmod +x gunicorn.sh
 ./gunicorn.sh
-cd /home/ubuntu/DevOpsSec_project
+cd /home/ubuntu/cicd/workspace/devops_pipeline
 cd nginx
 sudo chmod +x nginx.sh
 ./nginx.sh
