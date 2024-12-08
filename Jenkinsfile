@@ -15,7 +15,9 @@ pipeline {
         }
         stage("3.test") {
             steps {
-                sh "python3 -m pylint *.py"
+                sh '''#!/bin/bash
+                    source env/bin/activate
+                    python3 -m pylint *.py'''
             }
         }
         stage('4.restart') {
