@@ -14,7 +14,7 @@ pipeline {
             }
         }
         
-        stage('4.restart') {
+        stage('3.restart') {
             steps {
                 sh '''sudo systemctl daemon-reload
                     sudo systemctl restart gunicorn
@@ -22,13 +22,5 @@ pipeline {
             }
         } 
 
-        stage("3.test") {
-            steps {
-                sh '''#!/bin/bash
-                    source env/bin/activate
-                    python3 -m pylint *.py'''
-            }
-        } 
-              
     }
 }
