@@ -8,7 +8,8 @@ pipeline {
         }
         stage("2.build") {
             steps {
-                sh '''source env/bin/activate
+                sh '''#!/bin/bash
+                    source env/bin/activate
                     pip install -r requirements.txt'''
             }
         }
