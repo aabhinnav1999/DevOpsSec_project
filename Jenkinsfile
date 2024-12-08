@@ -13,19 +13,22 @@ pipeline {
                     pip install -r requirements.txt'''
             }
         }
-        // stage("3.test") {
-        //     steps {
-        //         sh '''#!/bin/bash
-        //             source env/bin/activate
-        //             python3 -m pylint *.py'''
-        //     }
-        // }
+        
         stage('4.restart') {
             steps {
                 sh '''sudo systemctl daemon-reload
                     sudo systemctl restart gunicorn
                     sudo systemctl restart nginx'''
             }
-        }        
+        } 
+
+        stage("3.test") {
+            steps {
+                sh '''#!/bin/bash
+                    source env/bin/activate
+                    python3 -m pylint *.py'''
+            }
+        } 
+              
     }
 }
