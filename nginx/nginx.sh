@@ -7,12 +7,12 @@ else
     sudo cp devopssec /etc/nginx/sites-available/devopssec
 fi
 if [ -f "/etc/nginx/sites-available/default" ]; then
-    sudo rm -rf /etc/nginx/sites-available/default
+    sudo rm /etc/nginx/sites-available/default
 else
     echo "file already deleted"
 fi
-if [ -f "/etc/nginx/sites-enabled/default" ]; then
-    sudo rm -rf /etc/nginx/sites-enabled/default
+if [ -e "/etc/nginx/sites-enabled/default" ]; then
+    sudo rm /etc/nginx/sites-enabled/default
 else
     echo "file already deleted"
 fi
