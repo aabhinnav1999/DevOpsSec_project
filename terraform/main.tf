@@ -69,6 +69,7 @@ resource "aws_db_instance" "devops-rds" {
     instance_class = "db.t3.micro"
     publicly_accessible = true
     skip_final_snapshot = true
+    vpc_security_group_ids = [ "sg-007a346066554ddf3" ]
 
     username = var.db_username
     password = var.db_password
