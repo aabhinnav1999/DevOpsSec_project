@@ -1,3 +1,10 @@
+def color_map =[
+'FAILURE':'danger',
+'SUCCESS':'good',
+'UNSTABLE':'warning',
+'ABORTED':'#5303ff'  
+]
+
 pipeline {
     agent {label 'node_1'}
     stages {
@@ -23,4 +30,12 @@ pipeline {
         } 
 
     }
+    post 
+    {
+        always
+        {
+           slackSend channel: 'aabhinnav_jenkins', color: color_map[currentBuild.currentResult], message: "pipeline status : ${currentBuild.currentResult} \n job name: ${env.JOB_NAME} \n build number: ${env.BUILD_NUMBER} \n ${env.BUILD_URL}"
+        }
+    }
+
 }
