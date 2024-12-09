@@ -34,6 +34,7 @@ body{
     left: 1100px;
     text-decoration: none;
     height: 35px;
+    background-color: red;
 } 
 
 #main_div_0 .btn-danger
