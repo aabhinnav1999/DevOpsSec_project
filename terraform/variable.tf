@@ -8,8 +8,6 @@ variable "db_name" {
 
 variable "db_username" {
     type = string 
-
-    
 }
 
 variable "db_password" {
