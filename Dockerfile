@@ -1,6 +1,12 @@
-FROM python:3.12
-ENV PYTHONUNBUFFERED=1
+FROM python:3.12 AS base
 WORKDIR /django_folder
-COPY . .
-RUN pip3 install -r requirements.txt
-CMD ["python3","manage.py","runserver","0.0.0.0:8000"]
+COPY ./django_project /django_folder
+RUN pip install --no-cache-dir -r requirements.txt -t /django_folder/deps
+
+FROM gcr.io/distroless/python3
+WORKDIR /django_folder
+ENV PYTHONPATH=/django_folder/deps
+ENV PYTHONUNBUFFERED=1
+COPY --from=base /django_folder /django_folder
+EXPOSE 8000
+CMD ["manage.py", "runserver", "0.0.0.0:8000"]
