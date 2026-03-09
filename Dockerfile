@@ -8,5 +8,6 @@ WORKDIR /django_folder
 ENV PYTHONPATH=/django_folder/deps
 ENV PYTHONUNBUFFERED=1
 COPY --from=base /django_folder /django_folder
+USER 1000
 EXPOSE 8000
 CMD ["manage.py", "runserver", "0.0.0.0:8000"]
