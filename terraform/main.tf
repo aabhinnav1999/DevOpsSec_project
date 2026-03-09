@@ -2,7 +2,7 @@ terraform {
     required_providers {
       aws = {
         source = "hashicorp/aws"
-        version = "~> 5.0"
+        version = "~> 6.0"
       }
     }
 }
@@ -12,11 +12,11 @@ provider "aws" {
 }
 
 resource "aws_instance" "jenkins_server" {
-    ami = "ami-03cc8375791cb8bcf"
+    ami = var.ami_id
     instance_type = "t3.small"
-    key_name = "irl-keypair"
+    key_name = var.key_name
     monitoring = true
-    vpc_security_group_ids = [ "sg-080b2f530b66fd07b" ]
+    vpc_security_group_ids = var.vpc_security_group
 
     tags = {
       "Name" = "jenkins_server"
@@ -32,16 +32,12 @@ resource "aws_instance" "jenkins_server" {
                 EOF
 }
 
-output "jenkins-ip" {
-    value = aws_instance.jenkins_server.public_ip
-}
-
 resource "aws_instance" "devops_server" {
-    ami = "ami-03cc8375791cb8bcf"
+    ami = var.ami_id
     instance_type = "t3.micro"
-    key_name = "irl-keypair"
+    key_name = var.key_name
     monitoring = true
-    vpc_security_group_ids = [ "sg-013ef36435de1738d" ]
+    vpc_security_group_ids = var.vpc_security_group
 
     tags = {
       "Name" = "devops_server" 
@@ -56,10 +52,6 @@ resource "aws_instance" "devops_server" {
                 EOF
 }
 
-output "devops-ip" {
-    value = aws_instance.devops_server.public_ip
-}
-
 resource "aws_db_instance" "devops-rds" {
     identifier = var.rds_identifier
     db_name = var.db_name
@@ -69,7 +61,7 @@ resource "aws_db_instance" "devops-rds" {
     instance_class = "db.t3.micro"
     publicly_accessible = true
     skip_final_snapshot = true
-    vpc_security_group_ids = [ "sg-007a346066554ddf3" ]
+    vpc_security_group_ids = var.db_security_group
 
     username = var.db_username
     password = var.db_password
@@ -78,8 +70,3 @@ resource "aws_db_instance" "devops-rds" {
       "Name" = "devops-rds" 
     }
 }
-
-output "rds-endpoint" {
-    value = aws_db_instance.devops-rds.address
-}
-
