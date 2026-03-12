@@ -19,3 +19,5 @@ docker-compose.yml
 # If you keep local env files
 .env
 .env.*
+
+other_files/

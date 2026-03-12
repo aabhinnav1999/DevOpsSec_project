@@ -1,9 +1,7 @@
 asgiref
 Django
 gunicorn
-mysqlclient
 packaging
-PyMySQL
 python-decouple
 sqlparse
 tzdata
